@@ -147,7 +147,11 @@ void printer_state_polling() {
 
 void filament_pin_setup() {
   #if PIN_EXISTS(MT_DET_1)
+    #if MT_DET_PIN_INVERTING
+    SET_INPUT_PULLDOWN(MT_DET_1_PIN);
+    #else
     SET_INPUT_PULLUP(MT_DET_1_PIN);
+    #endif
   #endif
   #if PIN_EXISTS(MT_DET_2)
     SET_INPUT_PULLUP(MT_DET_2_PIN);

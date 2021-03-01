@@ -75,7 +75,7 @@ lv_group_t*  g;
 uint16_t DeviceCode = 0x9488;
 extern uint8_t sel_id;
 
-uint8_t bmp_public_buf[14 * 1024];
+uint8_t bmp_public_buf[LVGL_TFTBUF_SIZE];
 uint8_t public_buf[513];
 
 extern bool flash_preview_begin, default_preview_flg, gcode_preview_over;
@@ -139,7 +139,7 @@ void tft_lvgl_init() {
 
   lv_init();
 
-  lv_disp_buf_init(&disp_buf, bmp_public_buf, nullptr, LV_HOR_RES_MAX * 14); // Initialize the display buffer
+  lv_disp_buf_init(&disp_buf, bmp_public_buf, nullptr, LVGL_TFTBUF_SIZE/2); // Initialize the display buffer
 
   lv_disp_drv_t disp_drv;     // Descriptor of a display driver
   lv_disp_drv_init(&disp_drv);    // Basic initialization

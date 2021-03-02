@@ -131,7 +131,7 @@
 // Misc. Functions
 //
 #if HAS_TFT_LVGL_UI
-  //#define MKSPWC
+  #define MKSPWC
   #ifdef MKSPWC
     #define SUICIDE_PIN                     PB2   // Enable MKSPWC SUICIDE PIN
     #define SUICIDE_PIN_INVERTING          false  // Enable MKSPWC PIN STATE

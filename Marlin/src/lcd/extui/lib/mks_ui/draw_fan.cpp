@@ -101,8 +101,8 @@ void disp_fan_value() {
   public_buf_l[0] = '\0';
   strcat(public_buf_l, fan_menu.state);
   strcat_P(public_buf_l, PSTR(": "));
-  //sprintf_P(buf1, PSTR("%3d"), thermalManager.fan_speed[0]);
-  sprintf_P(buf1, PSTR("%3d %%"), thermalManager.fanPercent(thermalManager.fan_speed[0]));
+  sprintf_P(buf1, PSTR("%3d"), thermalManager.fan_speed[0]);
+  //sprintf_P(buf1, PSTR("%3d %%"), thermalManager.fanPercent(thermalManager.fan_speed[0]));
   strcat(public_buf_l, buf1);
   lv_label_set_text(fanText, public_buf_l);
   lv_obj_align(fanText, nullptr, LV_ALIGN_CENTER, 0, -65);

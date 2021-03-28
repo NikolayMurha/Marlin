@@ -44,6 +44,15 @@
 
 extern lv_group_t*  g;
 static lv_obj_t *scr;
+
+static lv_obj_t *labelExt1, *labelFan;
+
+TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2);
+
+#if HAS_HEATED_BED
+  static lv_obj_t* labelBed;
+#endif
+
 #if ENABLED(MKS_TEST)
   uint8_t curent_disp_ui = 0;
 #endif
@@ -174,9 +183,44 @@ void lv_draw_ready_print() {
 
   }
   else {
-    lv_big_button_create(scr, "F:/bmp_tool.bin", main_menu.tool, 20, 90, event_handler, ID_TOOL);
-    lv_big_button_create(scr, "F:/bmp_set.bin", main_menu.set, 180, 90, event_handler, ID_SET);
-    lv_big_button_create(scr, "F:/bmp_printing.bin", main_menu.print, 340, 90, event_handler, ID_PRINT);
+    lv_big_button_create(scr, "F:/bmp_tool.bin", main_menu.tool, 20, 180, event_handler, ID_TOOL);
+    lv_big_button_create(scr, "F:/bmp_set.bin", main_menu.set, 180, 180, event_handler, ID_SET);
+    lv_big_button_create(scr, "F:/bmp_printing.bin", main_menu.print, 340, 180, event_handler, ID_PRINT);
+
+    // Monitoring
+    #if 1
+      lv_obj_t *buttonExt1 = lv_img_create(scr, NULL);
+      lv_img_set_src(buttonExt1, "F:/bmp_ext1_state.bin");
+      lv_obj_set_pos(buttonExt1, 45, 20);
+      labelExt1 = lv_label_create(scr, 45, 80, nullptr);
+      lv_obj_align(labelExt1, buttonExt1, LV_ALIGN_CENTER, 0, 60);
+
+      #if HAS_MULTI_EXTRUDER
+        lv_obj_t *buttonExt2 = lv_img_create(scr, NULL);
+        lv_img_set_src(buttonExt2, "F:/bmp_ext2_state.bin");
+        lv_obj_set_pos(buttonExt2, 45, 120);
+        labelExt2 = lv_label_create(scr, 45, 180, nullptr);
+        lv_obj_align(labelExt2, buttonExt2, LV_ALIGN_CENTER, 0, 60);
+      #endif
+
+      #if HAS_HEATED_BED
+        lv_obj_t *buttonBedstate = lv_img_create(scr, NULL);
+        lv_img_set_src(buttonBedstate, "F:/bmp_bed_state.bin");
+        lv_obj_set_pos(buttonBedstate, 210, 20);
+        labelBed = lv_label_create(scr, 210, 80, nullptr);
+        lv_obj_align(labelBed, buttonBedstate, LV_ALIGN_CENTER, 0, 60);
+      #endif
+
+      lv_obj_t *buttonFanstate = lv_img_create(scr, NULL);
+      lv_img_set_src(buttonFanstate, "F:/bmp_fan_state.bin");
+      lv_obj_set_pos(buttonFanstate, 380, 20);
+      labelFan = lv_label_create(scr, 380, 80, nullptr);    
+      lv_obj_align(labelFan, buttonFanstate, LV_ALIGN_CENTER, 0, 60);
+
+      disp_ready_print();
+
+    #endif // if 1
+
   }
 
   #if ENABLED(TOUCH_SCREEN_CALIBRATION)
@@ -186,6 +230,25 @@ void lv_draw_ready_print() {
       lv_draw_touch_calibration_screen();
     }
   #endif
+}
+
+void disp_ready_print() {
+      //sprintf_P(public_buf_l, PSTR("%d°C"), (int)thermalManager.temp_hotend[0].celsius);
+      sprintf(public_buf_l, "%d℃", (int)thermalManager.degHotend(uiCfg.extruderIndex));
+      lv_label_set_text(labelExt1, public_buf_l);
+      
+      #if HAS_MULTI_EXTRUDER
+        sprintf_P(public_buf_l, "%d℃", (int)thermalManager.temp_hotend[0].celsius);
+        lv_label_set_text(labelExt2, public_buf_l);
+      #endif
+
+      #if HAS_HEATED_BED
+        sprintf(public_buf_l, "%d℃", (int)thermalManager.degBed());
+        lv_label_set_text(labelBed, public_buf_l);
+      #endif
+
+      sprintf_P(public_buf_l, PSTR("%d %%"), thermalManager.fanPercent(thermalManager.fan_speed[0]));
+      lv_label_set_text(labelFan, public_buf_l);
 }
 
 void lv_clear_ready_print() {

@@ -47,10 +47,11 @@ static lv_obj_t *scr;
 static lv_obj_t *labelExt1, *labelFan, *labelZpos, *labelTime;
 static lv_obj_t *labelPause, *labelStop, *labelOperat;
 static lv_obj_t *bar1, *bar1ValueText;
-static lv_obj_t *buttonPause, *buttonOperat, *buttonStop, *buttonExt1, *buttonExt2, *buttonBedstate, *buttonFanstate, *buttonZpos;
+static lv_obj_t *buttonPause, *buttonOperat, *buttonStop, *buttonExt1, *buttonBedstate, *buttonFanstate, *buttonZpos;
 
 #if ENABLED(HAS_MULTI_EXTRUDER)
   static lv_obj_t *labelExt2;
+  static lv_obj_t *buttonExt2;
 #endif
 
 #if HAS_HEATED_BED
@@ -219,24 +220,24 @@ void lv_draw_printing() {
 }
 
 void disp_ext_temp() {
-  sprintf(public_buf_l, printing_menu.temp1, thermalManager.degHotend(0), thermalManager.degTargetHotend(0));
+  sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.degHotend(0), (int)thermalManager.degTargetHotend(0));
   lv_label_set_text(labelExt1, public_buf_l);
 
   #if HAS_MULTI_EXTRUDER
-    sprintf(public_buf_l, printing_menu.temp1, thermalManager.degHotend(1), thermalManager.degTargetHotend(1));
+    sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.degHotend(1), (int)thermalManager.degTargetHotend(1));
     lv_label_set_text(labelExt2, public_buf_l);
   #endif
 }
 
 void disp_bed_temp() {
   #if HAS_HEATED_BED
-    sprintf(public_buf_l, printing_menu.bed_temp, thermalManager.degBed(), thermalManager.degTargetBed());
+    sprintf(public_buf_l, printing_menu.bed_temp, (int)thermalManager.degBed(), (int)thermalManager.degTargetBed());
     lv_label_set_text(labelBed, public_buf_l);
   #endif
 }
 
 void disp_fan_speed() {
-  sprintf_P(public_buf_l, PSTR("%d%%"), thermalManager.fanPercent(thermalManager.fan_speed[0]));
+  sprintf_P(public_buf_l, PSTR("%d%%"), (int)thermalManager.fanPercent(thermalManager.fan_speed[0]));
   lv_label_set_text(labelFan, public_buf_l);
 }
 

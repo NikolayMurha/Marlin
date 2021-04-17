@@ -26,6 +26,9 @@
 #include "draw_ui.h"
 #include <lv_conf.h>
 
+#include "../../module/stepper.h"
+
+#include "../../../../gcode/gcode.h" 
 #include "../../../../gcode/queue.h"
 #include "../../../../module/motion.h"
 #include "../../../../inc/MarlinConfig.h"
@@ -58,33 +61,35 @@ void disp_cur_pos() {
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   char str_1[16];
   if (event != LV_EVENT_RELEASED) return;
-  if (!queue.ring_buffer.full(3)) {
+  //if (!queue.ring_buffer.full(3)) {
+  if (queue.ring_buffer.empty()) {
     bool do_inject = true;
     float dist = uiCfg.move_dist;
     switch (obj->mks_obj_id) {
-      case ID_M_X_N: dist *= -1; case ID_M_X_P: cur_label = 'X'; break;
-      case ID_M_Y_N: dist *= -1; case ID_M_Y_P: cur_label = 'Y'; break;
-      case ID_M_Z_N: dist *= -1; case ID_M_Z_P: cur_label = 'Z'; break;
+      case ID_M_X_N: dist *= -1; 
+      case ID_M_X_P: cur_label = 'X'; break;
+      case ID_M_Y_N: dist *= -1; 
+      case ID_M_Y_P: cur_label = 'Y'; break;
+      case ID_M_Z_N: dist *= -1; 
+      case ID_M_Z_P: cur_label = 'Z'; break;
+      case ID_M_STEP:
+        if (abs(10 * (int)uiCfg.move_dist) == 100) 
+          uiCfg.move_dist = 0.1;
+        else uiCfg.move_dist *= 10.0f;
+        do_inject = false;
+        disp_move_dist();
+        break;
+      case ID_M_RETURN:
+        queue.inject_P(PSTR("G90"));  // Split to reduce injected commands below
+        clear_cur_ui();
+        draw_return_ui();
+        return;
       default: do_inject = false;
     }
     if (do_inject) {
-      sprintf_P(public_buf_l, PSTR("G91\nG1 %c%s F%d\nG90"), cur_label, dtostrf(dist, 1, 3, str_1), uiCfg.moveSpeed);
+      sprintf_P((char *)public_buf_l, PSTR("G0 F%d %c%s"), uiCfg.moveSpeed, cur_label, dtostrf(dist, 1, 3, str_1));
       queue.inject(public_buf_l);
     }
-  }
-
-  switch (obj->mks_obj_id) {
-    case ID_M_STEP:
-      if (abs(10 * (int)uiCfg.move_dist) == 100)
-        uiCfg.move_dist = 0.1;
-      else
-        uiCfg.move_dist *= 10.0f;
-      disp_move_dist();
-      break;
-    case ID_M_RETURN:
-      clear_cur_ui();
-      draw_return_ui();
-      return;
   }
   disp_cur_pos();
 }
@@ -124,6 +129,10 @@ void lv_draw_move_motor() {
   labelP = lv_label_create(scr, TFT_WIDTH - 100, TITLE_YPOS, "Z:0.0mm");
   if (labelP != NULL)
     updatePosTask = lv_task_create(refresh_pos, 300, LV_TASK_PRIO_LOWEST, 0);
+
+  planner.synchronize();                // Not sure this is correct code at all
+  gcode.reset_stepper_timeout();
+  queue.inject_P(PSTR("M17\nG91"));
 
   disp_move_dist();
   disp_cur_pos();

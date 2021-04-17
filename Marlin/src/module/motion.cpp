@@ -34,6 +34,10 @@
 
 #include "../inc/MarlinConfig.h"
 
+#if BOTH(HAS_TFT_LVGL_UI,NO_MOTION_BEFORE_HOMING)
+  #include "../lcd/extui/lib/mks_ui/draw_ui.h" 
+#endif
+
 #if IS_SCARA
   #include "../libs/buzzer.h"
   #include "../lcd/marlinui.h"
@@ -1145,7 +1149,19 @@ void prepare_line_to_destination() {
       SERIAL_ECHO_START();
       SERIAL_ECHOLN(msg);
       TERN_(HAS_STATUS_MESSAGE, ui.set_status(msg));
-      return true;
+      #if BOTH(HAS_TFT_LVGL_UI,NO_MOTION_BEFORE_HOMING)       // Fix MKSUI dialog functions. Override safety logic 
+        switch (disp_state)
+        {
+          case MOVE_MOTOR_UI: return false; break;
+          case FILAMENTCHANGE_UI: return false; break;
+          case EXTRUSION_UI: return false; break;
+        default:
+          return true;
+          break;
+        }     
+      #else
+        return true;
+      #endif
     }
     return false;
   }

@@ -1155,6 +1155,7 @@ void prepare_line_to_destination() {
           case MOVE_MOTOR_UI: return false; break;
           case FILAMENTCHANGE_UI: return false; break;
           case EXTRUSION_UI: return false; break;
+          case DIALOG_UI: return false; break;
         default:
           return true;
           break;

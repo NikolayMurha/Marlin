@@ -194,9 +194,9 @@ static bool longName2DosName(const char *longName, char *dosName) {
       // Fail for illegal characters
       PGM_P p = PSTR("|<>^+=?/[];,*\"\\");
       while (const uint8_t b = pgm_read_byte(p++)) if (b == c) return false;
-      dosName[i++] = toUpperCase(c); //+ (WITHIN(c, 'a', 'z') ? 'A' - 'Z' : 0); // Uppercase required for 8.3 name
+      dosName[i++] = toUpperCase(c);                            //+ (WITHIN(c, 'a', 'z') ? 'A' - 'Z' : 0); // Uppercase required for 8.3 name
     }
-    if (i >= 5) {
+    if (i > 5) {
       strcat_P(dosName, PSTR("~1.GCO"));
       break;
     }

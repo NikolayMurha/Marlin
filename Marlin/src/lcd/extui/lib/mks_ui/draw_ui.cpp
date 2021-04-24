@@ -139,11 +139,11 @@ void gCfgItems_init() {
   gCfgItems.wifi_mode_sel = STA_MODEL;
   gCfgItems.fileSysType   = FILE_SYS_SD;
   gCfgItems.wifi_type     = ESP_WIFI;
-  gCfgItems.filamentchange_load_length   = 200;
+  gCfgItems.filamentchange_load_length   = EXTRUDE_MAXLENGTH;     // Sync to Configuration.h settings
   gCfgItems.filamentchange_load_speed    = 1000;
-  gCfgItems.filamentchange_unload_length = 200;
+  gCfgItems.filamentchange_unload_length = EXTRUDE_MAXLENGTH;     // Sync to Configuration.h settings
   gCfgItems.filamentchange_unload_speed  = 1000;
-  gCfgItems.filament_limit_temp          = 200;
+  gCfgItems.filament_limit_temp          = EXTRUDE_MINTEMP;       // Sync to Configuration.h settings
 
   gCfgItems.encoder_enable = true;
 

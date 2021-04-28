@@ -147,7 +147,11 @@ void printer_state_polling() {
 
 void filament_pin_setup() {
   #if PIN_EXISTS(MT_DET_1)
+    #if MT_DET_PIN_INVERTING
+    SET_INPUT_PULLDOWN(MT_DET_1_PIN);
+    #else
     SET_INPUT_PULLUP(MT_DET_1_PIN);
+    #endif
   #endif
   #if PIN_EXISTS(MT_DET_2)
     SET_INPUT_PULLUP(MT_DET_2_PIN);
@@ -161,19 +165,15 @@ void filament_check() {
   const int FIL_DELAY = 20;
   #if PIN_EXISTS(MT_DET_1)
     static int fil_det_count_1 = 0;
-    if (!READ(MT_DET_1_PIN) && !MT_DET_PIN_INVERTING)
+    //SERIAL_ECHO("; filament check: ");
+    //SERIAL_ECHOLN(fil_det_count_1);
+    if (!READ(MT_DET_1_PIN) && !MT_DET_PIN_INVERTING){
       fil_det_count_1++;
-    else if (READ(MT_DET_1_PIN) && MT_DET_PIN_INVERTING)
+    }else if (READ(MT_DET_1_PIN) && MT_DET_PIN_INVERTING){
       fil_det_count_1++;
-    else if (fil_det_count_1 > 0)
+    }else if (fil_det_count_1 > 0){
       fil_det_count_1--;
-
-    if (!READ(MT_DET_1_PIN) && !MT_DET_PIN_INVERTING)
-      fil_det_count_1++;
-    else if (READ(MT_DET_1_PIN) && MT_DET_PIN_INVERTING)
-      fil_det_count_1++;
-    else if (fil_det_count_1 > 0)
-      fil_det_count_1--;
+    }
   #endif
 
   #if PIN_EXISTS(MT_DET_2)
@@ -184,24 +184,10 @@ void filament_check() {
       fil_det_count_2++;
     else if (fil_det_count_2 > 0)
       fil_det_count_2--;
-
-    if (!READ(MT_DET_2_PIN) && !MT_DET_PIN_INVERTING)
-      fil_det_count_2++;
-    else if (READ(MT_DET_2_PIN) && MT_DET_PIN_INVERTING)
-      fil_det_count_2++;
-    else if (fil_det_count_2 > 0)
-      fil_det_count_2--;
   #endif
 
   #if PIN_EXISTS(MT_DET_3)
     static int fil_det_count_3 = 0;
-    if (!READ(MT_DET_3_PIN) && !MT_DET_PIN_INVERTING)
-      fil_det_count_3++;
-    else if (READ(MT_DET_3_PIN) && MT_DET_PIN_INVERTING)
-      fil_det_count_3++;
-    else if (fil_det_count_3 > 0)
-      fil_det_count_3--;
-
     if (!READ(MT_DET_3_PIN) && !MT_DET_PIN_INVERTING)
       fil_det_count_3++;
     else if (READ(MT_DET_3_PIN) && MT_DET_PIN_INVERTING)
@@ -221,6 +207,7 @@ void filament_check() {
       || fil_det_count_3 >= FIL_DELAY
     #endif
   ) {
+    SERIAL_ECHOLN("; filament sensor pause");
     clear_cur_ui();
     card.pauseSDPrint();
     stop_print_time();
@@ -230,6 +217,18 @@ void filament_check() {
       flash_preview_begin = true;
     else
       default_preview_flg = true;
+  
+    #if PIN_EXISTS(MT_DET_1)
+    fil_det_count_1 = 0;
+    #endif
+
+    #if PIN_EXISTS(MT_DET_2)
+    fil_det_count_2 = 0;
+    #endif
+
+    #if PIN_EXISTS(MT_DET_3)
+    fil_det_count_3 = 0;
+    #endif
 
     lv_draw_printing();
   }

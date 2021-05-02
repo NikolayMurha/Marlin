@@ -52,7 +52,7 @@
   #include "draw_touch_calibration.h"
 #endif
 
-CFG_ITMES gCfgItems;
+CFG_ITEMS gCfgItems;
 UI_CFG uiCfg;
 DISP_STATE_STACK disp_state_stack;
 DISP_STATE disp_state = MAIN_UI;

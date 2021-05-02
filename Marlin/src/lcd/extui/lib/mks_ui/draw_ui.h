@@ -206,7 +206,7 @@ typedef struct {
   celsius_t filament_limit_temp;
   float     pausePosX, pausePosY, pausePosZ;
   uint32_t  curFilesize;
-} CFG_ITMES;
+} CFG_ITEMS;
 
 typedef struct {
   uint8_t curTempType:1,
@@ -420,7 +420,7 @@ typedef enum {
 } keyboard_value_state;
 extern keyboard_value_state keyboard_value;
 
-extern CFG_ITMES gCfgItems;
+extern CFG_ITEMS gCfgItems;
 extern UI_CFG uiCfg;
 extern DISP_STATE disp_state;
 extern DISP_STATE last_disp_state;

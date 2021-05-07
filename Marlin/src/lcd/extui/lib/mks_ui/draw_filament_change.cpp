@@ -50,8 +50,9 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_FILAMNT_IN:
       uiCfg.filament_load_heat_flg = true;
-      if (abs(thermalManager.degTargetHotend(uiCfg.extruderIndex) - thermalManager.wholeDegHotend(uiCfg.extruderIndex)) <= 1
-          || gCfgItems.filament_limit_temp <= thermalManager.wholeDegHotend(uiCfg.extruderIndex)) {
+      if (thermalManager.degTargetHotend(uiCfg.extruderIndex)      
+      && (abs(thermalManager.degTargetHotend(uiCfg.extruderIndex) - thermalManager.wholeDegHotend(uiCfg.extruderIndex)) <= 2
+          || thermalManager.wholeDegHotend(uiCfg.extruderIndex) >= gCfgItems.filament_limit_temp)) {
         lv_clear_filament_change();
         lv_draw_dialog(DIALOG_TYPE_FILAMENT_HEAT_LOAD_COMPLETED);
       }
@@ -62,14 +63,14 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
           thermalManager.setTargetHotend(gCfgItems.filament_limit_temp, uiCfg.extruderIndex);
           thermalManager.start_watching_hotend(uiCfg.extruderIndex);
         }
+        filament_sprayer_temp(); // Зачем?
       }
       break;
     case ID_FILAMNT_OUT:
       uiCfg.filament_unload_heat_flg = true;
       if (thermalManager.degTargetHotend(uiCfg.extruderIndex)
-          && (abs(thermalManager.degTargetHotend(uiCfg.extruderIndex) - thermalManager.wholeDegHotend(uiCfg.extruderIndex)) <= 1
-              || thermalManager.wholeDegHotend(uiCfg.extruderIndex) >= gCfgItems.filament_limit_temp)
-      ) {
+          && (abs(thermalManager.degTargetHotend(uiCfg.extruderIndex) - thermalManager.wholeDegHotend(uiCfg.extruderIndex)) <= 2
+              || thermalManager.wholeDegHotend(uiCfg.extruderIndex) >= gCfgItems.filament_limit_temp) ) {
         lv_clear_filament_change();
         lv_draw_dialog(DIALOG_TYPE_FILAMENT_HEAT_UNLOAD_COMPLETED);
       }

@@ -127,8 +127,8 @@ void lv_draw_move_motor() {
   if (labelP != NULL)
     updatePosTask = lv_task_create(refresh_pos, 300, LV_TASK_PRIO_LOWEST, 0);
 
-  planner.synchronize();                // Not sure this is correct code at all
-  gcode.reset_stepper_timeout();
+  //planner.synchronize();                // Not sure this is correct code at all
+  //gcode.reset_stepper_timeout();
   queue.inject_P(PSTR("M17\nG91"));
 
   disp_move_dist();

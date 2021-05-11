@@ -35,7 +35,7 @@
 #include "../inc/MarlinConfig.h"
 
 #if BOTH(HAS_TFT_LVGL_UI,NO_MOTION_BEFORE_HOMING)
-  #include "../lcd/extui/lib/mks_ui/draw_ui.h" 
+  #include "../lcd/extui/mks_ui/draw_ui.h" 
 #endif
 
 #if IS_SCARA

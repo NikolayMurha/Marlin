@@ -681,7 +681,7 @@
 #define MANUAL_IP_SERVER_EN         "Name Server"
 #define MANUAL_IP_INIT_DATA_EN      "0.0.0.0"
 #define MANUAL_TEXT_POINT_EN        "."
-#define MANUAL_TEXT_ENTER_EN        "enter"
+#define MANUAL_TEXT_ENTER_EN        "Enter"
 
 #define TEXT_FORGET_TIPS_TITLE_EN "Forget Network"
 #define TEXT_FORGET_NETWORK_TIPS1_EN "Are you sure you want to\nforget this network?"

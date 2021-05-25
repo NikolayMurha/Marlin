@@ -796,6 +796,7 @@ void idle(TERN_(ADVANCED_PAUSE_FEATURE, bool no_stepper_sleep/*=false*/)) {
     if (!gcode.autoreport_paused) {
       TERN_(AUTO_REPORT_TEMPERATURES, thermalManager.auto_reporter.tick());
       TERN_(AUTO_REPORT_SD_STATUS, card.auto_reporter.tick());
+      TERN_(AUTO_REPORT_POSITION, position_auto_reporter.tick());
     }
   #endif
 
@@ -1072,11 +1073,17 @@ void setup() {
   while (!MYSERIAL1.connected() && PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
 
   #if HAS_MULTI_SERIAL && !HAS_ETHERNET
-    MYSERIAL2.begin(BAUDRATE);
+    #ifndef BAUDRATE_2
+      #define BAUDRATE_2 BAUDRATE
+    #endif
+    MYSERIAL2.begin(BAUDRATE_2);
     serial_connect_timeout = millis() + 1000UL;
     while (!MYSERIAL2.connected() && PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
     #ifdef SERIAL_PORT_3
-      MYSERIAL3.begin(BAUDRATE);
+      #ifndef BAUDRATE_3
+        #define BAUDRATE_3 BAUDRATE
+      #endif
+      MYSERIAL3.begin(BAUDRATE_3);
       serial_connect_timeout = millis() + 1000UL;
       while (!MYSERIAL3.connected() && PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
     #endif
@@ -1487,7 +1494,7 @@ void setup() {
   #endif
 
   #if HAS_TRINAMIC_CONFIG && DISABLED(PSU_DEFAULT_OFF)
-    SETUP_RUN(test_tmc_connection(true, true, true, true));
+    SETUP_RUN(test_tmc_connection());
   #endif
 
   #if HAS_DRIVER_SAFE_POWER_PROTECT

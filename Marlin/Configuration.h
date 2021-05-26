@@ -416,7 +416,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -517,9 +517,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  22.24
-    #define DEFAULT_Ki   1.89
-    #define DEFAULT_Kd  65.53
+    #define DEFAULT_Kp  12.87
+    #define DEFAULT_Ki   0.67
+    #define DEFAULT_Kd  62.19
   #endif
 #endif // PIDTEMP
 
@@ -806,7 +806,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 403 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 413 }
 
 /**
  * Default Max Feed Rate (mm/s)

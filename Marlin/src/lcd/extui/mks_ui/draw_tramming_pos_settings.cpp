@@ -104,7 +104,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 void lv_draw_tramming_pos_settings() {
   char buf2[50];
 
-  scr = lv_screen_create(MANUAL_LEVELING_POSIGION_UI, machine_menu.LevelingParaConfTitle);
+  scr = lv_screen_create(MANUAL_LEVELING_POSITION_UI, machine_menu.LevelingParaConfTitle);
 
   if (!uiCfg.para_ui_page) {
     itoa(gCfgItems.trammingPos[0].x, public_buf_l, 10);

@@ -125,16 +125,16 @@ void gCfgItems_init() {
   gCfgItems.pausePosX         = -1;
   gCfgItems.pausePosY         = -1;
   gCfgItems.pausePosZ         = 5;
-  gCfgItems.trammingPos[0].x  = X_MIN_POS + 30; // FL
-  gCfgItems.trammingPos[0].y  = Y_MIN_POS + 30; // FL
-  gCfgItems.trammingPos[1].x  = X_MAX_POS - 30; // FR
-  gCfgItems.trammingPos[1].y  = Y_MIN_POS + 30;// FR
-  gCfgItems.trammingPos[2].x  = X_MAX_POS - 30; // BR
-  gCfgItems.trammingPos[2].y  = Y_MAX_POS - 30; // BR
-  gCfgItems.trammingPos[3].x  = X_MIN_POS + 30; // BL
-  gCfgItems.trammingPos[3].y  = Y_MAX_POS - 30; // BL 
-  gCfgItems.trammingPos[4].x  = X_BED_SIZE / 2; // CENTER
-  gCfgItems.trammingPos[4].y  = Y_BED_SIZE / 2; // CENTER
+  gCfgItems.trammingPos[0].x  = X_MIN_POS + 30;
+  gCfgItems.trammingPos[0].y  = Y_MIN_POS + 30;
+  gCfgItems.trammingPos[1].x  = X_MIN_POS + 30;
+  gCfgItems.trammingPos[1].y  = Y_MAX_POS - 30;
+  gCfgItems.trammingPos[2].x  = X_MAX_POS - 30;
+  gCfgItems.trammingPos[2].y  = Y_MAX_POS - 30;
+  gCfgItems.trammingPos[3].x  = X_MAX_POS - 30;
+  gCfgItems.trammingPos[3].y  = Y_MIN_POS + 30;
+  gCfgItems.trammingPos[4].x  = X_BED_SIZE / 2;
+  gCfgItems.trammingPos[4].y  = Y_BED_SIZE / 2;
   gCfgItems.cloud_enable      = false;
   gCfgItems.wifi_mode_sel = STA_MODEL;
   gCfgItems.fileSysType   = FILE_SYS_SD;
@@ -941,7 +941,7 @@ void clear_cur_ui() {
     case LEVELING_SETTIGNS_UI:        break;
     case LEVELING_PARA_UI:            lv_clear_level_settings(); break;
     case DELTA_LEVELING_PARA_UI:      break;
-    case MANUAL_LEVELING_POSIGION_UI: lv_clear_tramming_pos_settings(); break;
+    case MANUAL_LEVELING_POSITION_UI: lv_clear_tramming_pos_settings(); break;
     case MAXFEEDRATE_UI:              lv_clear_max_feedrate_settings(); break;
     case STEPS_UI:                    lv_clear_step_settings(); break;
     case ACCELERATION_UI:             lv_clear_acceleration_settings(); break;
@@ -1049,7 +1049,7 @@ void draw_return_ui() {
       case LEVELING_SETTIGNS_UI:        break;
       case LEVELING_PARA_UI:            lv_draw_level_settings(); break;
       case DELTA_LEVELING_PARA_UI:      break;
-      case MANUAL_LEVELING_POSIGION_UI: lv_draw_tramming_pos_settings(); break;
+      case MANUAL_LEVELING_POSITION_UI: lv_draw_tramming_pos_settings(); break;
       case MAXFEEDRATE_UI:              lv_draw_max_feedrate_settings(); break;
       case STEPS_UI:                    lv_draw_step_settings(); break;
       case ACCELERATION_UI:             lv_draw_acceleration_settings(); break;

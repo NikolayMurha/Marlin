@@ -88,10 +88,6 @@ typedef struct LEDColor {
 /**
  * Color presets
  */
-<<<<<<< HEAD
-#define MakeLEDColor(R,G,B,W,I)   LEDColor(R, G, B OPTARG(HAS_WHITE_LED, W) OPTARG(NEOPIXEL_LED, I))
-=======
->>>>>>> MKS_UI_FB4S_5
 
 #define LEDColorOff()             LEDColor(  0,   0,   0)
 #define LEDColorRed()             LEDColor(255,   0,   0)
@@ -119,25 +115,15 @@ public:
   static void setup(); // init()
 
   static void set_color(const LEDColor &color
-<<<<<<< HEAD
-    OPTARG(NEOPIXEL_LED, bool isSequence=false)
-=======
     OPTARG(NEOPIXEL_IS_SEQUENTIAL, bool isSequence=false)
->>>>>>> MKS_UI_FB4S_5
   );
 
   static inline void set_color(uint8_t r, uint8_t g, uint8_t b
     OPTARG(HAS_WHITE_LED, uint8_t w=0)
     OPTARG(NEOPIXEL_LED, uint8_t i=NEOPIXEL_BRIGHTNESS)
-<<<<<<< HEAD
-    OPTARG(NEOPIXEL_LED, bool isSequence=false)
-  ) {
-    set_color(MakeLEDColor(r, g, b, w, i) OPTARG(NEOPIXEL_LED, isSequence));
-=======
     OPTARG(NEOPIXEL_IS_SEQUENTIAL, bool isSequence=false)
   ) {
     set_color(LEDColor(r, g, b OPTARG(HAS_WHITE_LED, w) OPTARG(NEOPIXEL_LED, i)) OPTARG(NEOPIXEL_IS_SEQUENTIAL, isSequence));
->>>>>>> MKS_UI_FB4S_5
   }
 
   static inline void set_off()   { set_color(LEDColorOff()); }

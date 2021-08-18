@@ -30,11 +30,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-<<<<<<< HEAD
-#define CONFIGURATION_ADV_H_VERSION 02000801
-=======
 #define CONFIGURATION_ADV_H_VERSION 02000901
->>>>>>> MKS_UI_FB4S_5
 
 //===========================================================================
 //============================= Thermal Settings ============================
@@ -1849,15 +1845,9 @@
   #define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
   //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false           // Change if Z babysteps should go the other way
-<<<<<<< HEAD
-  //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
-  #define BABYSTEP_MULTIPLICATOR_Z  0.01       // (steps or mm) Steps or millimeter distance for each Z babystep
-  //#define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
-=======
   #define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
   #define BABYSTEP_MULTIPLICATOR_Z  0.01       // (steps or mm) Steps or millimeter distance for each Z babystep
   //#define BABYSTEP_MULTIPLICATOR_XY 0.01       // (steps or mm) Steps or millimeter distance for each XY babystep
->>>>>>> MKS_UI_FB4S_5
 
   #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
@@ -2108,11 +2098,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-<<<<<<< HEAD
-#define MINIMUM_STEPPER_PULSE 0
-=======
 #define MINIMUM_STEPPER_PULSE 1
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -2162,11 +2148,7 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-<<<<<<< HEAD
-#define TX_BUFFER_SIZE 32
-=======
 #define TX_BUFFER_SIZE 64
->>>>>>> MKS_UI_FB4S_5
 
 // Host Receive Buffer Size
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
@@ -3326,7 +3308,6 @@
   #if ENABLED(AIR_EVACUATION)
     #define AIR_EVACUATION_ACTIVE       LOW    // Set to "HIGH" if the on/off function is active HIGH
     //#define AIR_EVACUATION_PIN        42     // Override the default Cutter Vacuum or Laser Blower pin
-<<<<<<< HEAD
   #endif
 
   //#define AIR_ASSIST                         // Air Assist control with G-codes M8-M9
@@ -3335,16 +3316,6 @@
     //#define AIR_ASSIST_PIN            44     // Override the default Air Assist pin
   #endif
 
-=======
-  #endif
-
-  //#define AIR_ASSIST                         // Air Assist control with G-codes M8-M9
-  #if ENABLED(AIR_ASSIST)
-    #define AIR_ASSIST_ACTIVE           LOW    // Active state on air assist pin
-    //#define AIR_ASSIST_PIN            44     // Override the default Air Assist pin
-  #endif
-
->>>>>>> MKS_UI_FB4S_5
   //#define SPINDLE_SERVO                      // A servo converting an angle to spindle power
   #ifdef SPINDLE_SERVO
     #define SPINDLE_SERVO_NR   0               // Index of servo used for spindle control
@@ -3598,11 +3569,7 @@
 /**
  * Auto-report position with M154 S<seconds>
  */
-<<<<<<< HEAD
-//#define AUTO_REPORT_POSITION
-=======
 #define AUTO_REPORT_POSITION
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * Include capabilities in M115 output

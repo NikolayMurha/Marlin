@@ -102,11 +102,7 @@ SECTIONS
     . = ALIGN(4);
   } >FLASH
 
-<<<<<<< HEAD
-  .ARM.extab   : { 
-=======
   .ARM.extab   : {
->>>>>>> MKS_UI_FB4S_5
   	. = ALIGN(4);
   	*(.ARM.extab* .gnu.linkonce.armextab.*)
   	. = ALIGN(4);
@@ -150,11 +146,7 @@ SECTIONS
   _sidata = LOADADDR(.data);
 
   /* Initialized data sections into "RAM" Ram type memory */
-<<<<<<< HEAD
-  .data : 
-=======
   .data :
->>>>>>> MKS_UI_FB4S_5
   {
     . = ALIGN(4);
     _sdata = .;        /* create a global symbol at data start */
@@ -165,11 +157,6 @@ SECTIONS
     _edata = .;        /* define a global symbol at data end */
   } >RAM AT> FLASH
 
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> MKS_UI_FB4S_5
   /* Uninitialized data section into "RAM" Ram type memory */
   . = ALIGN(4);
   .bss :
@@ -197,11 +184,6 @@ SECTIONS
     . = ALIGN(8);
   } >RAM
 
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> MKS_UI_FB4S_5
 
   /* Remove information from the compiler libraries */
   /DISCARD/ :

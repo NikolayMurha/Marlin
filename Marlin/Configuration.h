@@ -35,11 +35,7 @@
  *
  * Advanced settings can be found in Configuration_adv.h
  */
-<<<<<<< HEAD
-#define CONFIGURATION_H_VERSION 02000801
-=======
 #define CONFIGURATION_H_VERSION 02000901
->>>>>>> MKS_UI_FB4S_5
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -119,11 +115,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-<<<<<<< HEAD
-#define BAUDRATE 250000
-=======
 #define BAUDRATE 115200
->>>>>>> MKS_UI_FB4S_5
 //#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
 /**
@@ -131,13 +123,8 @@
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-<<<<<<< HEAD
-//#define SERIAL_PORT_2 -1
-//#define BAUDRATE_2 250000   // Enable to override BAUDRATE
-=======
 //#define SERIAL_PORT_2 1
 #define BAUDRATE_2 115200   // Enable to override BAUDRATE
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -156,11 +143,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-<<<<<<< HEAD
 #define CUSTOM_MACHINE_NAME "FBGhost 5"
-=======
-#define CUSTOM_MACHINE_NAME "FBGhost 4s/5"
->>>>>>> MKS_UI_FB4S_5
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -618,15 +601,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.0 }
     #define DEFAULT_Kd_LIST { 114.00, 112.0 }
   #else
-<<<<<<< HEAD
     #define DEFAULT_Kp  22.24
     #define DEFAULT_Ki   1.89
     #define DEFAULT_Kd  65.53
-=======
-    #define DEFAULT_Kp  17.04
-    #define DEFAULT_Ki   1.31
-    #define DEFAULT_Kd  55.34
->>>>>>> MKS_UI_FB4S_5
   #endif
 #endif // PIDTEMP
 
@@ -665,16 +642,10 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-<<<<<<< HEAD
   #define DEFAULT_bedKp 55.48
   #define DEFAULT_bedKi 9.61
   #define DEFAULT_bedKd 213.49
 
-=======
-  #define DEFAULT_bedKp 40.68
-  #define DEFAULT_bedKi 7.93
-  #define DEFAULT_bedKd 139.15
->>>>>>> MKS_UI_FB4S_5
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -848,29 +819,19 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-<<<<<<< HEAD
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true// Set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
-=======
-#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define I_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define J_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define K_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
->>>>>>> MKS_UI_FB4S_5
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -898,14 +859,10 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-<<<<<<< HEAD
-#define E0_DRIVER_TYPE TMC2209_STANDALONE
-=======
 //#define I_DRIVER_TYPE  A4988
 //#define J_DRIVER_TYPE  A4988
 //#define K_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
->>>>>>> MKS_UI_FB4S_5
+#define E0_DRIVER_TYPE TMC2209_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -960,11 +917,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-<<<<<<< HEAD
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 403 }
-=======
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -999,16 +952,10 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-<<<<<<< HEAD
 // @efim-a-efim - decreased E0 acceleration to make it less noisy (yes, even with TMC2208 drivers)
 #define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
-=======
-#define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * Default Jerk limits (mm/s)
@@ -1020,18 +967,12 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-<<<<<<< HEAD
   #define DEFAULT_XJERK 12.0
   #define DEFAULT_YJERK 12.0
-  #define DEFAULT_ZJERK  0.5
-=======
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
   #define DEFAULT_ZJERK  0.5
   //#define DEFAULT_IJERK  0.3
   //#define DEFAULT_JJERK  0.3
   //#define DEFAULT_KJERK  0.3
->>>>>>> MKS_UI_FB4S_5
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
 
@@ -1115,10 +1056,6 @@
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
 #define PROBE_MANUALLY
-<<<<<<< HEAD
-//#define MANUAL_PROBE_START_Z 0.2
-=======
->>>>>>> MKS_UI_FB4S_5
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -1373,9 +1310,9 @@
 
 // @section machine
 
-//#define ALL_DRV_2208
+#define ALL_DRV_2208
 //#define FB_4S_STOCK
-#define FB_5_STOCK
+//#define FB_5_STOCK
 
 #ifdef ALL_DRV_2208
 #define USR_E0_DIR true
@@ -1400,29 +1337,18 @@
 
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-<<<<<<< HEAD
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR false
-#define INVERT_Z_DIR true
-=======
 #define INVERT_X_DIR USR_X_DIR
 #define INVERT_Y_DIR USR_Y_DIR
 #define INVERT_Z_DIR USR_Z_DIR
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
->>>>>>> MKS_UI_FB4S_5
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-<<<<<<< HEAD
-#define INVERT_E0_DIR true
-#define INVERT_E1_DIR false
-=======
 #define INVERT_E0_DIR USR_E0_DIR
 #define INVERT_E1_DIR true
->>>>>>> MKS_UI_FB4S_5
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1458,15 +1384,9 @@
 
 // @section machine
 
-<<<<<<< HEAD
 // The size of the print bed
 #define X_BED_SIZE 245
 #define Y_BED_SIZE 190
-=======
-// The size of the printable area
-#define X_BED_SIZE 250
-#define Y_BED_SIZE 210
->>>>>>> MKS_UI_FB4S_5
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1919,11 +1839,7 @@
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
 #define EEPROM_SETTINGS     // Persistent storage with M500 and M501
-<<<<<<< HEAD
-//#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
-=======
 #define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
->>>>>>> MKS_UI_FB4S_5
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
@@ -1961,14 +1877,9 @@
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-<<<<<<< HEAD
 #define PREHEAT_2_TEMP_HOTEND 245
 #define PREHEAT_2_TEMP_BED    110
-#define PREHEAT_2_TEMP_CHAMBER 35
-=======
-#define PREHEAT_2_TEMP_HOTEND  250
-#define PREHEAT_2_TEMP_BED     100
->>>>>>> MKS_UI_FB4S_5
+//#define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 /**

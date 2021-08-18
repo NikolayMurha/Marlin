@@ -266,24 +266,6 @@
 #define STR_X_MAX                           "x_max"
 #define STR_X2_MIN                          "x2_min"
 #define STR_X2_MAX                          "x2_max"
-<<<<<<< HEAD
-#define STR_Y_MIN                           "y_min"
-#define STR_Y_MAX                           "y_max"
-#define STR_Y2_MIN                          "y2_min"
-#define STR_Y2_MAX                          "y2_max"
-#define STR_Z_MIN                           "z_min"
-#define STR_Z_MAX                           "z_max"
-#define STR_Z2_MIN                          "z2_min"
-#define STR_Z2_MAX                          "z2_max"
-#define STR_Z3_MIN                          "z3_min"
-#define STR_Z3_MAX                          "z3_max"
-#define STR_Z4_MIN                          "z4_min"
-#define STR_Z4_MAX                          "z4_max"
-#define STR_Z_PROBE                         "z_probe"
-#define STR_PROBE_EN                        "probe_en"
-#define STR_FILAMENT_RUNOUT_SENSOR          "filament"
-
-=======
 
 #if HAS_Y_AXIS
   #define STR_Y_MIN                         "y_min"
@@ -307,7 +289,6 @@
 #define STR_PROBE_EN                        "probe_en"
 #define STR_FILAMENT_RUNOUT_SENSOR          "filament"
 
->>>>>>> MKS_UI_FB4S_5
 // General axis names
 #define STR_X "X"
 #define STR_Y "Y"

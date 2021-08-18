@@ -76,11 +76,7 @@ void LEDLights::setup() {
 }
 
 void LEDLights::set_color(const LEDColor &incol
-<<<<<<< HEAD
-  OPTARG(NEOPIXEL_LED, bool isSequence/*=false*/)
-=======
   OPTARG(NEOPIXEL_IS_SEQUENTIAL, bool isSequence/*=false*/)
->>>>>>> MKS_UI_FB4S_5
 ) {
 
   #if ENABLED(NEOPIXEL_LED)

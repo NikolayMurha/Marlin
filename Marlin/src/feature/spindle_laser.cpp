@@ -78,12 +78,9 @@ void SpindleLaser::init() {
   #if ENABLED(AIR_ASSIST)
     OUT_WRITE(AIR_ASSIST_PIN, !AIR_ASSIST_ACTIVE);                    // Init Air Assist OFF
   #endif
-<<<<<<< HEAD
-=======
   #if ENABLED(I2C_AMMETER)
     ammeter.init();                                                   // Init I2C Ammeter
   #endif
->>>>>>> MKS_UI_FB4S_5
 }
 
 #if ENABLED(SPINDLE_LASER_PWM)

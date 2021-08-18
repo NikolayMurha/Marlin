@@ -772,16 +772,8 @@
     }
   }
 
-<<<<<<< HEAD
-  static void tmc_debug_loop(
-    const TMC_debug_enum i,
-    LOGICAL_AXIS_LIST(const bool print_e, const bool print_x, const bool print_y, const bool print_z)
-  ) {
-    if (print_x) {
-=======
   static void tmc_debug_loop(const TMC_debug_enum n, LOGICAL_AXIS_ARGS(const bool)) {
     if (x) {
->>>>>>> MKS_UI_FB4S_5
       #if AXIS_IS_TMC(X)
         tmc_status(stepperX, n);
       #endif
@@ -854,16 +846,8 @@
     SERIAL_EOL();
   }
 
-<<<<<<< HEAD
-  static void drv_status_loop(
-    const TMC_drv_status_enum i,
-    LOGICAL_AXIS_LIST(const bool print_e, const bool print_x, const bool print_y, const bool print_z)
-  ) {
-    if (print_x) {
-=======
   static void drv_status_loop(const TMC_drv_status_enum n, LOGICAL_AXIS_ARGS(const bool)) {
     if (x) {
->>>>>>> MKS_UI_FB4S_5
       #if AXIS_IS_TMC(X)
         tmc_parse_drv_status(stepperX, n);
       #endif
@@ -940,17 +924,9 @@
    * M122 report functions
    */
 
-<<<<<<< HEAD
-  void tmc_report_all(
-    LOGICAL_AXIS_LIST(const bool print_e/*=true*/, const bool print_x/*=true*/, const bool print_y/*=true*/, const bool print_z/*=true*/)
-  ) {
-    #define TMC_REPORT(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL);  tmc_debug_loop(ITEM, LOGICAL_AXIS_LIST(print_e, print_x, print_y, print_z)); }while(0)
-    #define DRV_REPORT(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL); drv_status_loop(ITEM, LOGICAL_AXIS_LIST(print_e, print_x, print_y, print_z)); }while(0)
-=======
   void tmc_report_all(LOGICAL_AXIS_ARGS(const bool)) {
     #define TMC_REPORT(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL); tmc_debug_loop(ITEM, LOGICAL_AXIS_ARGS()); }while(0)
     #define DRV_REPORT(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL); drv_status_loop(ITEM, LOGICAL_AXIS_ARGS()); }while(0)
->>>>>>> MKS_UI_FB4S_5
 
     TMC_REPORT("\t",                 TMC_CODES);
     #if HAS_DRIVER(TMC2209)
@@ -1075,16 +1051,8 @@
     }
   #endif
 
-<<<<<<< HEAD
-  static void tmc_get_registers(
-    TMC_get_registers_enum i,
-    LOGICAL_AXIS_LIST(const bool print_e, const bool print_x, const bool print_y, const bool print_z)
-  ) {
-    if (print_x) {
-=======
   static void tmc_get_registers(TMC_get_registers_enum n, LOGICAL_AXIS_ARGS(const bool)) {
     if (x) {
->>>>>>> MKS_UI_FB4S_5
       #if AXIS_IS_TMC(X)
         tmc_get_registers(stepperX, n);
       #endif
@@ -1157,15 +1125,8 @@
     SERIAL_EOL();
   }
 
-<<<<<<< HEAD
-  void tmc_get_registers(
-    LOGICAL_AXIS_LIST(bool print_e, bool print_x, bool print_y, bool print_z)
-  ) {
-    #define _TMC_GET_REG(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL); tmc_get_registers(ITEM, LOGICAL_AXIS_LIST(print_e, print_x, print_y, print_z)); }while(0)
-=======
   void tmc_get_registers(LOGICAL_AXIS_ARGS(bool)) {
     #define _TMC_GET_REG(LABEL, ITEM) do{ SERIAL_ECHOPGM(LABEL); tmc_get_registers(ITEM, LOGICAL_AXIS_ARGS()); }while(0)
->>>>>>> MKS_UI_FB4S_5
     #define TMC_GET_REG(NAME, TABS) _TMC_GET_REG(STRINGIFY(NAME) TABS, TMC_GET_##NAME)
     _TMC_GET_REG("\t", TMC_AXIS_CODES);
     TMC_GET_REG(GCONF, "\t\t");
@@ -1308,13 +1269,7 @@ static bool test_connection(TMC &st) {
   return test_result;
 }
 
-<<<<<<< HEAD
-void test_tmc_connection(
-  LOGICAL_AXIS_LIST(const bool test_e/*=true*/, const bool test_x/*=true*/, const bool test_y/*=true*/, const bool test_z/*=true*/)
-) {
-=======
 void test_tmc_connection(LOGICAL_AXIS_ARGS(const bool)) {
->>>>>>> MKS_UI_FB4S_5
   uint8_t axis_connection = 0;
 
   if (x) {

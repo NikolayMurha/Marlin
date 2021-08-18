@@ -120,11 +120,7 @@ typedef struct {
     bool raised:1;                // Raised before saved
     bool dryrun:1;                // M111 S8
     bool allow_cold_extrusion:1;  // M302 P1
-<<<<<<< HEAD
-    #if ENABLED(HAS_LEVELING)
-=======
     #if HAS_LEVELING
->>>>>>> MKS_UI_FB4S_5
       bool leveling:1;            // M420 S
     #endif
     #if DISABLED(NO_VOLUMETRICS)

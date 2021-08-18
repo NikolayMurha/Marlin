@@ -70,11 +70,7 @@
 #if HAS_TFT_LVGL_UI
   #include "lcd/extui/mks_ui/tft_lvgl_configuration.h"
   #include "lcd/extui/mks_ui/draw_ui.h"
-<<<<<<< HEAD
-  #include "lcd/extui/mks_ui/mks_hardware_test.h"
-=======
   #include "lcd/extui/mks_ui/mks_hardware.h"
->>>>>>> MKS_UI_FB4S_5
   #include <lvgl.h>
 #endif
 
@@ -1181,10 +1177,7 @@ void setup() {
   #endif
 
   #if HAS_FREEZE_PIN
-<<<<<<< HEAD
-=======
     SETUP_LOG("FREEZE_PIN");
->>>>>>> MKS_UI_FB4S_5
     SET_INPUT_PULLUP(FREEZE_PIN);
   #endif
 

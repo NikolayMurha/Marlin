@@ -67,11 +67,7 @@ extern uint8_t marlin_debug_flags;
 // Serial redirection
 //
 // Step 1: Find out what the first serial leaf is
-<<<<<<< HEAD
-#if BOTH(HAS_MULTI_SERIAL, SERIAL_CATCHALL)
-=======
 #if HAS_MULTI_SERIAL && defined(SERIAL_CATCHALL)
->>>>>>> MKS_UI_FB4S_5
   #define _SERIAL_LEAF_1 MYSERIAL
 #else
   #define _SERIAL_LEAF_1 MYSERIAL1
@@ -318,20 +314,10 @@ void serialprint_truefalse(const bool tf);
 void serial_spaces(uint8_t count);
 
 void print_bin(const uint16_t val);
-<<<<<<< HEAD
-void print_pos(
-  LINEAR_AXIS_LIST(const_float_t x, const_float_t y, const_float_t z),
-  PGM_P const prefix=nullptr, PGM_P const suffix=nullptr
-);
-
-inline void print_pos(const xyz_pos_t &xyz, PGM_P const prefix=nullptr, PGM_P const suffix=nullptr) {
-  print_pos(LINEAR_AXIS_LIST(xyz.x, xyz.y, xyz.z), prefix, suffix);
-=======
 void print_pos(LINEAR_AXIS_ARGS(const_float_t), PGM_P const prefix=nullptr, PGM_P const suffix=nullptr);
 
 inline void print_pos(const xyz_pos_t &xyz, PGM_P const prefix=nullptr, PGM_P const suffix=nullptr) {
   print_pos(LINEAR_AXIS_ELEM(xyz), prefix, suffix);
->>>>>>> MKS_UI_FB4S_5
 }
 
 #define SERIAL_POS(SUFFIX,VAR) do { print_pos(VAR, PSTR("  " STRINGIFY(VAR) "="), PSTR(" : " SUFFIX "\n")); }while(0)

@@ -4,7 +4,11 @@
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f446zet6",
+<<<<<<< HEAD
     "variant": "MARLIN_BIGTREE_OCTOPUS_V1_0"
+=======
+    "variant": "MARLIN_BIGTREE_OCTOPUS_V1"
+>>>>>>> MKS_UI_FB4S_5
   },
   "connectivity": [
     "can"

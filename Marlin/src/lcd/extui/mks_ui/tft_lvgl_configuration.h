@@ -34,9 +34,7 @@
 
 //#define TFT_ROTATION TFT_ROTATE_180
 
-#define LVGL_TFTBUF_SIZE 10*1024
-
-extern uint8_t bmp_public_buf[LVGL_TFTBUF_SIZE];
+extern uint8_t bmp_public_buf[10 * 1024];
 extern uint8_t public_buf[513];
 
 void tft_lvgl_init();

@@ -56,29 +56,35 @@ jobs:
 
         # STM32F1 (Maple) Environments
 
-        - STM32F103RC_btt
-        - STM32F103RC_btt_USB
-        - STM32F103RE_btt
-        - STM32F103RE_btt_USB
+        #- STM32F103RC_btt_maple
+        - STM32F103RC_btt_USB_maple
         - STM32F103RC_fysetc
         - STM32F103RC_meeb
         - jgaurora_a5s_a1
         - STM32F103VE_longer
-        - mks_robin
+        #- mks_robin_maple
         - mks_robin_lite
         - mks_robin_pro
-        - STM32F103RET6_creality
-        - mks_robin_nano35
+        #- mks_robin_nano35_maple
+        #- STM32F103RET6_creality_maple
 
         # STM32 (ST) Environments
 
+<<<<<<< HEAD
         - STM32F103RC_btt_stm32
+=======
+        - STM32F103RC_btt
+        #- STM32F103RC_btt_USB
+        - STM32F103RE_btt
+        - STM32F103RE_btt_USB
+        - STM32F103RET6_creality
+>>>>>>> MKS_UI_FB4S_5
         - STM32F407VE_black
         - STM32F401VE_STEVAL
         - BIGTREE_BTT002
         - BIGTREE_SKR_PRO
         - BIGTREE_GTR_V1_0
-        - mks_robin_stm32
+        - mks_robin
         - ARMED
         - FYSETC_S6
         - STM32F070CB_malyan
@@ -88,7 +94,11 @@ jobs:
         - rumba32
         - LERDGEX
         - LERDGEK
+<<<<<<< HEAD
         - mks_robin_nano35_stm32
+=======
+        - mks_robin_nano35
+>>>>>>> MKS_UI_FB4S_5
         - NUCLEO_F767ZI
         - REMRAM_V1
         - BTT_SKR_SE_BX
@@ -107,8 +117,25 @@ jobs:
 
     steps:
 
+    - name: Check out the PR
+      uses: actions/checkout@v2
+
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
     - name: Select Python 3.7
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: '3.7' # Version range or exact version of a Python version to use, using semvers version range syntax.
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
@@ -117,9 +144,6 @@ jobs:
       run: |
         pip install -U https://github.com/platformio/platformio-core/archive/develop.zip
         platformio update
-
-    - name: Check out the PR
-      uses: actions/checkout@v2
 
     - name: Run ${{ matrix.test-platform }} Tests
       run: |

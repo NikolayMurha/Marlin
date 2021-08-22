@@ -967,18 +967,12 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-<<<<<<< HEAD
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
-  #define DEFAULT_ZJERK  0.3
-=======
   #define DEFAULT_XJERK 12.0
   #define DEFAULT_YJERK 12.0
   #define DEFAULT_ZJERK  0.5
   //#define DEFAULT_IJERK  0.3
   //#define DEFAULT_JJERK  0.3
   //#define DEFAULT_KJERK  0.3
->>>>>>> Aranax
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
 
@@ -1767,11 +1761,7 @@
 #endif
 
 // Homing speeds (mm/min)
-<<<<<<< HEAD
 #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (10*60) }
-=======
-#define HOMING_FEEDRATE_MM_M { (40*60), (40*60), (4*60) }
->>>>>>> Aranax
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS

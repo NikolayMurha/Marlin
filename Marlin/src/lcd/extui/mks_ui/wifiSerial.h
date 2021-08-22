@@ -1,10 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
-<<<<<<< HEAD
- * Copyright (c) 2021 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
-=======
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
->>>>>>> MKS_UI_FB4S_5
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
